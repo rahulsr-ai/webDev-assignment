@@ -48,7 +48,6 @@ export default function SchoolsHomePage() {
     ...new Set(schools.map((school) => school.state)),
   ].sort();
 
-
   // Filter and search logic
   useEffect(() => {
     let filtered = schools;
@@ -172,45 +171,61 @@ export default function SchoolsHomePage() {
             {filteredSchools.map((school) => (
               <div
                 key={school.id}
-                className="group backdrop-blur-sm bg-white/70 border border-gray-200/50 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 overflow-hidden cursor-pointer"
+                className="group backdrop-blur-sm bg-white/80 border border-gray-200/50 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden cursor-pointer transform-gpu w-full h-full grid grid-rows-[auto_1fr_auto] min-h-[420px]"
               >
-                {/* School Image using CldImage */}
+                {/* School Image using CldImage - Fixed height */}
                 <div className="relative h-48 overflow-hidden">
                   <CldImage
                     width="400"
                     height="250"
                     src={getCloudinaryPublicId(school.image)}
                     alt={school.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                     crop={{
                       type: "fill",
                       source: true,
                     }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                
+                  {/* State Badge - Top Right */}
+                  <div className="absolute top-3 right-3 bg-gray-800/90 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-semibold text-white shadow-md">
+                  {school.city} , {school.state}
+                  </div>
                 </div>
 
-                {/* School Info */}
-                <div className="p-5">
-                  {/* School Name */}
-                  <h3 className="text-xl font-bold text-slate-800 group-hover:text-slate-900 transition-colors mb-3 line-clamp-2">
-                    {school.name}
-                  </h3>
+                {/* Main Content Container - Flexible middle section */}
+                <div className="p-5 flex flex-col justify-between min-h-0">
+                  <div>
+                    {/* School Name - Fixed height with line clamp */}
+                    <div className="h-14 mb-3">
+                      <h3 className="text-xl font-bold text-slate-800 group-hover:text-slate-900 transition-colors line-clamp-2 leading-tight">
+                        {school.name}
+                      </h3>
+                    </div>
 
-                  {/* Address & City */}
-                  <div className="space-y-2">
-                    <div className="flex items-start text-slate-600">
-                      <FaMapMarkerAlt className="mr-2 mt-1 flex-shrink-0 text-sm" />
-                      <div className="text-sm">
-                        <p className="line-clamp-2 mb-1">{school.address}</p>
+                    {/* Address Section - Fixed height with line clamp */}
+                    <div className="h-12 mb-4">
+                      <div className="flex items-start text-slate-600 group-hover:text-slate-700 transition-colors">
+                        <div className="flex-shrink-0 mt-0.5 mr-3">
+                          <FaMapMarkerAlt className="text-slate-500 text-sm group-hover:text-green-500 transition-colors duration-300" />
+                        </div>
+                        <div className="text-sm leading-relaxed min-w-0">
+                          <p className="line-clamp-2 text-slate-600 font-medium">
+                            {school.address}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="bg-green-400 p-2 rounded-b-2xl flex items-center justify-center font-semibold text-ll">
-                  <p className="font-medium text-white ">
-                    {school.city}, {school.state}
-                  </p>
+
+                  {/* View Details Button */}
+                  <div className="mt-auto">
+                    <button className="w-full bg-slate-800 hover:bg-slate-900 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-300 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2">
+                      View Details
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
