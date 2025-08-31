@@ -25,7 +25,7 @@ export async function POST(request) {
         state,
         contact,
         email_id,
-        image, // image contains the Cloudinary URL from the widget
+        image, // image contains the cloudinary URL from the widget
       }
     });
 

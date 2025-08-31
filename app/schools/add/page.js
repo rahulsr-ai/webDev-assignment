@@ -1,4 +1,5 @@
-'use client';
+'use client'
+
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -298,10 +299,10 @@ export default function AddSchoolPage() {
                 <button
                   type="submit"
                   disabled={isLoading || !imageUrl}
-                  className={`inline-flex items-center px-8 py-3 border border-transparent rounded-lg font-medium transition-all duration-200 ${
+                  className={`inline-flex items-center px-8 py-3 border border-transparent rounded-lg font-medium transition-all duration-200 cursor-pointer ${
                     isLoading || !imageUrl
                       ? 'bg-gray-400 text-white cursor-not-allowed'
-                      : 'bg-slate-800 text-white hover:bg-slate-900 shadow-lg hover:shadow-xl'
+                      : 'bg-green-800 text-white hover:bg-green-900 shadow-lg hover:shadow-xl'
                   }`}
                 >
                   {isLoading ? (

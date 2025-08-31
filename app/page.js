@@ -222,7 +222,7 @@ export default function SchoolsHomePage() {
 
                   {/* View Details Button */}
                   <div className="mt-auto">
-                    <button className="w-full bg-slate-800 hover:bg-slate-900 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-300 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2">
+                    <button className="w-full bg-green-800 hover:bg-green-900 cursor-pointer text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-300 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2">
                       View Details
                     </button>
                   </div>
